@@ -9,11 +9,11 @@ int main()
 	system("cls");
 	double A, B, C, D, x, x1, x2;
 	setlocale(LC_ALL, "Ukr");
-	cout << "Введіть значення змінної A = ";
+	cout << "Введіть значення  A = ";
 	cin >> A;
-	cout << "Введіть значення змінної B = ";
+	cout << "Введіть значення  B = ";
 	cin >> B;
-	cout << "Введіть значення змінної C = ";
+	cout << "Введіть значення  C = ";
 	cin >> C;
 	D = sqrt(pow(B, 2) - 4 * A * C);
 	printf("Результат D= %1.0f\n", D);
