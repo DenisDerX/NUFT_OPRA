@@ -39,11 +39,11 @@ int main()
 	cout << "Y" << endl;
 	SetColor(6, 1);
 	gotoxy(13, 7);
-	cout << "  / - \\" << endl;
+	cout << "  / - \\   //" << endl;
 	gotoxy(13, 8);
-	cout << "  |    \\ /" << endl;
+	cout << "  |    \\ //" << endl;
 	gotoxy(13, 9);
-	cout << "  || (__V" << endl;
+	cout << "  || (__V/" << endl;
 	gotoxy(0, 0);
 	SetColor(1, 1);
 	system("pause");
