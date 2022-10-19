@@ -34,12 +34,7 @@ int main()
 	}
 	else (D = 0);
 		x = (-B) / (2 * A);
-
-	if (x1 < x2)
-        cout << "x1=" << x1 << endl << "x2=" << x2 << endl;
-	else 
-		cout << "x1=" << x2 << endl << "x2=" << x1 << endl;
-
+	(x1<x2)? cout << "x1=" << x1 << endl << "x2=" << x2 << endl : cout << "x1=" << x2 << endl << "x2=" << x1 << endl;
 
 
 }
