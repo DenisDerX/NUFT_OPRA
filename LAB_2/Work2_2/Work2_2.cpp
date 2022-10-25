@@ -27,13 +27,14 @@ int main()
 	cin >> C;
 	D = sqrt(pow(B, 2) - 4 * A * C);
 	printf("Результат D= %1.0f\n", D);
-	if (D>0)
+	if (D > 0)
 	{
 		x1 = ((-B) - D) / (2 * A);
 		x2 = ((-B) + D) / (2 * A);
 	}
-	else (D = 0);
-		x = (-B) / (2 * A);
+	else;
+	if (D == 0)
+	x = (-B) / (2 * A);
 	(x1<x2)? cout << "x1=" << x1 << endl << "x2=" << x2 << endl : cout << "x1=" << x2 << endl << "x2=" << x1 << endl;
 
 
