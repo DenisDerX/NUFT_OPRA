@@ -18,6 +18,7 @@ int main()
 {
 	system("cls");
 	setlocale(LC_ALL, "Ukr");
+	const double C = 10;
 	double x, y, xstart, xend, xstep;
 	cout << "Введіть інтервал xstart..xend\n";
 	cout << "Введіть xstart =";
@@ -31,9 +32,9 @@ int main()
 	printf("-------------------------\n");
 	for (x = xstart; x <= xend; x = x + xstep)
 	{
-		if (x > 10)
+		if (x > C)
 			y = exp(-x + 1) + (x * (sin(5 * x)));
-		else (x <= 10);
+		else (x <= C);
 		y = pow((log(abs(x))), 2) - cbrt(x);
 		printf("| %8.4f | %8.4f |\n", x, y);
 	}
