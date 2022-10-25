@@ -18,4 +18,4 @@ int main()
 {
 	system("cls");
 	setlocale(LC_ALL, "Ukr");
-	double sum, mult, i, j;
+	
