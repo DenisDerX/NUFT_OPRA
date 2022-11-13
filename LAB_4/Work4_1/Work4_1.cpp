@@ -10,13 +10,12 @@ int main()
 	setlocale(LC_ALL, "Ukr");
 	int k = 1;
 	float x;
-	double e, a, sum = 0;
+	double e, a{}, sum = 0;
 	cout << "Введіть значення E= ";
 	cin >> e;
 	cout << "Введіть значення X= ";
 	cin >> x;
-	a = fabs(pow(cos(x), k) / pow(k, 2));
-	while (a<e)
+	while (a<=e)
 	{
 		k++;
 		a = fabs(pow(cos(x), k) / pow(k, 2));
