@@ -20,6 +20,7 @@ int main()
 	printf("_________________________\n");
 	printf("| x        | y        |\n");
 	printf("-------------------------\n");
+	x = xstart - xstep;
 	while (x <= xend)
 	{
 		x = x + xstep;
