@@ -8,7 +8,7 @@ int main()
 {
 	system("cls");
 	setlocale(LC_ALL, "Ukr");
-	int k = 1;
+	int n = 1;
 	double x, e, a{}, sum = 0;
 	cout << "Введіть значення E= ";
 	cin >> e;
@@ -16,11 +16,11 @@ int main()
 	cin >> x;
 	while (a<=e)
 	{
-		k++;
-		a = fabs(pow(cos(x), k) / pow(k, 2));
+		n++;
+		a = fabs(pow(cos(x), n) / pow(n, 2));
 		sum = sum + a;
 	}
-	printf("Sum=%10.7f K = %d\n", sum, k);
+	printf("Sum=%10.7f N = %d\n", sum, n);
 	system("pause");
 	return 0;
 }
