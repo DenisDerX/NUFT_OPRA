@@ -1,4 +1,5 @@
-﻿#include <math.h>
+﻿
+#include <math.h>
 #include <iostream>
 #include <stdio.h>
 #include <windows.h>
@@ -7,21 +8,22 @@ int main()
 {
 	system("cls");
 	setlocale(LC_ALL, "Ukr");
-	int n = 1;
-	double x, e, a{}, sum = 0;
-	cout << "Введіть значення E(0<E<1)= ";
+	double Sum, S, e, x, k{ 1 };
+	int n = 0;
+	cout << "E в діапазоні (0<E<1): ";
 	cin >> e;
-	cout << "Введіть значення X= ";
+	cout << "X: ";
 	cin >> x;
+	S = cos(pow((x), k)) / pow(k, 2);
+	Sum = S;
 	do
 	{
+		S = cos(pow((x), k)) / pow(k, 2);
+		Sum = Sum + S;
+		k++;
 		n++;
-		a = fabs(pow(cos(x), n) / pow(n, 2));
-		sum = sum + a;
-		printf("Sum=%10.7f N = %d\n", sum, n);
+		printf("Sum = %d\nN = %d\n", Sum, n);
 	} 
-	while (e<=(fabs(a)));
-	printf("-------------------------\n");
-	system("pause");
+	while (e<=fabs(S));
 	return 0;
 }
