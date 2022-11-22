@@ -8,8 +8,8 @@ int main()
 {
 	system("cls");
 	setlocale(LC_ALL, "Ukr");
-	double Sum, S, e, x, k{};
-	int n = 1;
+	double Sum, S, e, x, k{1};
+	int n = 0;
 	cout << "E: ";
 	cin >> e;
 	cout << "X: ";
@@ -23,7 +23,6 @@ int main()
 		k++;
 		n++;
 	}
-	cout <<"Сума :" << Sum << endl;
-	cout << "Кількість :" << n << endl;
+	printf("Sum=%d\nN = %d\n", Sum, n);
 	return 0;
 }
