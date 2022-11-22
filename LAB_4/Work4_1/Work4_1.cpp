@@ -8,19 +8,22 @@ int main()
 {
 	system("cls");
 	setlocale(LC_ALL, "Ukr");
+	double Sum, S, e, x, k{};
 	int n = 1;
-	double x, e, a{}, sum = 0;
-	cout << "Введіть значення E= ";
+	cout << "E: ";
 	cin >> e;
-	cout << "Введіть значення X= ";
+	cout << "X: ";
 	cin >> x;
-	while (a<=e)
+	S= cos(pow((x), k)) / pow(k, 2);
+	Sum = S;
+	while (fabs(S) > e)
 	{
+		S = cos(pow((x), k)) / pow(k, 2);
+		Sum = Sum + S;
+		k++;
 		n++;
-		a = fabs(pow(cos(x), n) / pow(n, 2));
-		sum = sum + a;
 	}
-	printf("Sum=%10.7f N = %d\n", sum, n);
-	system("pause");
+	cout <<"Сума :" << Sum << endl;
+	cout << "Кількість :" << n << endl;
 	return 0;
 }
