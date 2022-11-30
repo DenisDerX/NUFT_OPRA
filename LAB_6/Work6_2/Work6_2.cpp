@@ -10,7 +10,7 @@ int main()
     setlocale(LC_ALL, "Ukr");
     const int n = 10;
     int i, im, k;
-    double a[n], max;
+    double a[n];
     cout << "Введіть масив А["<<n<<"]= ";
     for (i = 0; i < n; i++)
     {
