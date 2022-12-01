@@ -9,36 +9,28 @@ int main()
     system("cls");
     setlocale(LC_ALL, "Ukr");
     const int n = 10;
-    int i, im, k;
+    int i,k;
     double a[n];
-    cout << "Введіть масив А["<<n<<"]= ";
-    for (i = 0; i < n; i++)
+    cout << "Введіть елементи, які бажаєте бачити в масиві= " << endl;
+    for (int i = 0; i < n; i++)
     {
+        cout << "A[" << i + 1 << "] = ";
         cin >> a[i];
     }
     system("cls");
-    cout<< " Вхідний масив А["<<n<<"]= ";
+    cout << " Вхідний масив А[" << n << "]= ";
     for (i = 0; i < n; i++)
     {
         cout << a[i] << " ";
-    }
-    im = 0;
-    for (i = 1; i < n; i++)
-    {
-        im = i;
     }
     cout << "Вивести всі числа масиву менші за = ";
     cin >> k;
     for (int i = 0; i < n; i++)
     {
         if (a[i] < k)
-        {
-            cout << a[i] << " ";
-        }
+            cout << "Елементи = " << a[i] << " Індекси = " << i << endl;
     }
-    cout << endl << "Індекс= " << im << endl;
     system("pause");
     return 0;
 }
-
 
