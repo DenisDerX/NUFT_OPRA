@@ -9,7 +9,7 @@ int main()
     system("cls");
     setlocale(LC_ALL, "Ukr");
     const int n = 7, m = 8;
-    int i, j, min;
+    int i, j;
     int mat[n][m];
     srand(time(NULL));
     printf("Ваша матриця");
@@ -23,16 +23,4 @@ int main()
         }
         cout << endl;
     }
-	min = mat[0][0];
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			if (mat[i][j] < min)
-				min = mat[i][j];
-		}
-
-	}
-	cout << "Мінімальний елемент: " << min;
-	return 0;
 }
