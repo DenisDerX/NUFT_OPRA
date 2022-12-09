@@ -1,13 +1,12 @@
 ﻿#include <iostream>
 #include<string>
 #include<stdlib.h>
-#include<cstring>
 
 using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "English");
+	setlocale(LC_ALL, "Ukr");
 	string stroka;
 	int n=0,l=0;
 	cout << "Введіть текст(Англійською): ";
@@ -23,7 +22,7 @@ int main()
 			l++;
 		}
 	}
+	cout << "Кількість букв: " << l << endl;
 	cout << "Кількісить цифр: " <<n<< endl;
-	cout << "Кількість букв: " <<l<< endl;
 	return 0;
 }
