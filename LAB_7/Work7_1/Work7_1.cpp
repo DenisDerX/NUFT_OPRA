@@ -9,7 +9,7 @@ int main()
     system("cls");
     setlocale(LC_ALL, "Ukr");
     const int n = 7, m = 8;
-    int i, j, min;
+    int i, j, min=0;
     int mat[n][m];
     srand(time(NULL));
     printf("Ваша матриця");
@@ -23,7 +23,6 @@ int main()
         }
         cout << endl;
     }
-	min = mat[0][0];
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)

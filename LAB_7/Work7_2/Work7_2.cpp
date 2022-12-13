@@ -9,9 +9,7 @@ int main()
     system("cls");
     setlocale(LC_ALL, "Ukr");
     const int n = 7, m = 8, k=7;
-    int i, j;
-    int mat[n][m];
-    int sum[k]{};
+    int mat[n][m], sum[k]{}, i, j;
     srand(time(NULL));
     printf("Ваша матриця");
     cout << endl;
