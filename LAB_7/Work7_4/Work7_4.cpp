@@ -8,8 +8,8 @@ int main()
 {
     system("cls");
     setlocale(LC_ALL, "Ukr");
-    const int n = 7, m = 8;
-    int i,j, min;
+    const int n = 3, m = 4, k = 3;
+    int i, j, arf=0, l=0;
     int mat[n][m];
     srand(time(NULL));
     printf("Ваша матриця: ");
@@ -20,28 +20,15 @@ int main()
         {
             mat[i][j] = rand() % 100 - 50;
             printf("%4d", mat[i][j]);
+            if (mat[i][j] >= 0)
+            {
+                arf = arf + mat[i][j];
+                l++;
+            }
         }
         cout << endl;
     }
-	for (int i = 0; i < n; i++)
-	{
-		int k = 0, a = 0;
-		 ;
-		for (int j = 0; j < m; j++)
-		{
-			if (j >= i && i <= n - 1 && j <= m - 1 - i)
-			{
-				a = a + mat[i][j];
-				k++;
-			}
-		}
-		if (k!= 0)
-		{
-			printf("Середнє арифметичне= ");
-			a = a / k;
-			cout << a <<" "<<endl;
-		}
-	}
-
-	return 0;
+    arf = arf / l;
+    cout << "Середнэ арифметичне: " << arf << endl;
+    return 0;
 }
