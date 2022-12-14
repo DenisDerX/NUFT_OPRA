@@ -29,9 +29,13 @@ int main()
             if (j > i && mat[i][j] > 0)
             {
                 sum[i] = sum[i] + mat[i][j];
+               
             }
+          
         }
         cout << sum[i] << " ";
     }
+    printf("- Одновимірний масив");
+    
     return 0;
 }
