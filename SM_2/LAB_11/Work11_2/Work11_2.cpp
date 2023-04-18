@@ -14,7 +14,7 @@ int main()
     int mat[n][m];
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            mat[i][j] = rand() % 100-40;
+            mat[i][j] = (rand() % (99 - (-99) + 1)) + (-99);
         }
     }
     cout << "Початкова матриця:" << endl;
