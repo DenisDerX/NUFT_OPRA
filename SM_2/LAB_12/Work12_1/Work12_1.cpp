@@ -21,7 +21,7 @@ int outv(int* v, int nv)
 	cout << "\n";
 	return 0;
 }
-bool det(int* v, int nv)
+int det(int* v, int nv)
 {
 	int i;
 	for (i = 0; i < nv - 1; i++)
