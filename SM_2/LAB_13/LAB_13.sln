@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Work13_2", "Work13_2\Work13
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Work13_3", "Work13_3\Work13_3.vcxproj", "{38F0FD2B-E5DF-4744-B310-FE5586D4CAF4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Work13_4", "Work13_4\Work13_4.vcxproj", "{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{38F0FD2B-E5DF-4744-B310-FE5586D4CAF4}.Release|x64.Build.0 = Release|x64
 		{38F0FD2B-E5DF-4744-B310-FE5586D4CAF4}.Release|x86.ActiveCfg = Release|Win32
 		{38F0FD2B-E5DF-4744-B310-FE5586D4CAF4}.Release|x86.Build.0 = Release|Win32
+		{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}.Debug|x64.ActiveCfg = Debug|x64
+		{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}.Debug|x64.Build.0 = Debug|x64
+		{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}.Debug|x86.ActiveCfg = Debug|Win32
+		{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}.Debug|x86.Build.0 = Debug|Win32
+		{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}.Release|x64.ActiveCfg = Release|x64
+		{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}.Release|x64.Build.0 = Release|x64
+		{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}.Release|x86.ActiveCfg = Release|Win32
+		{FC7874B5-7CAD-4C64-8A1B-9258D003A2E4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
