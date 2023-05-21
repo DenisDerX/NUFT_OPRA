@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <windows.h>
+
 using namespace std;
 
 struct p
@@ -10,21 +11,18 @@ struct p
     int e;
     p* next;
 };
-
-int main() {
-    system("cls");
+p* arr(int n)
+{
     srand(time(NULL));
-    setlocale(LC_CTYPE, "ukr");
-    int k = 0, n, min;
     p* begin = NULL;
     p* last = NULL;
     p* list = NULL;
-    cout << "\n\n Введіть кількість елементів = ";
-    cin >> n;
+
     while (n > 0)
     {
         last = new p;
         last->e = rand() % 100 - 40;
+
         if (begin == NULL)
         {
             last->next = NULL;
@@ -35,16 +33,23 @@ int main() {
             last->next = NULL;
             list->next = last;
         }
+
         list = last;
         n--;
     }
-    cout << " Сформований список = \n";
-    list = begin;
+
+    return begin;
+}
+void print(p* list)
+{
     while (list)
     {
         cout << " " << list->e;
         list = list->next;
     }
+}
+p* rev(p* begin, int& k)
+{
     p* prev = NULL;
     p* current = begin;
     p* next = NULL;
@@ -57,22 +62,31 @@ int main() {
         k++;
     }
 
-    begin = prev;
-
-    cout << "\n Перетворений список = \n";
-    list = begin;
-    while (list)
-    {
-        cout << " " << list->e;
-        list = list->next;
-    }
-    cout << "\n\n Кількість замін = " << k << endl;
-
+    return prev;
+}
+void del(p* begin)
+{
     while (begin)
     {
-        list = begin;
+        p* list = begin;
         begin = list->next;
         delete list;
     }
+}
+int main() {
+    system("cls");
+    setlocale(LC_CTYPE, "ukr");
+    int k = 0, n, min;
+    p* begin = NULL;
+    cout << "\n\n Введіть кількість елементів = ";
+    cin >> n;
+    begin = arr(n);
+    cout << " Сформований список = \n";
+    print(begin);
+    begin = rev(begin, k);
+    cout << "\n Перетворений список = \n";
+    print(begin);
+    cout << "\n\n Кількість замін = " << k << endl;
+    del(begin);
     return 0;
 }
