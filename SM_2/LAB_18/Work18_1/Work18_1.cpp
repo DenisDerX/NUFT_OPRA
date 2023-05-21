@@ -76,7 +76,7 @@ void del(p* begin)
 int main() {
     system("cls");
     setlocale(LC_CTYPE, "ukr");
-    int k = 0, n, min;
+    int k = 0, n;
     p* begin = NULL;
     cout << "\n\n Введіть кількість елементів = ";
     cin >> n;

@@ -44,8 +44,10 @@ void sort(p*& stack) {
 }
 
 int main() {
+    system("cls");
+    setlocale(LC_CTYPE, "ukr");
     int length;
-    cout << "Enter the length of the array: ";
+    cout << "Введіть кількість елементів = ";
     cin >> length;
 
     p* stack = nullptr;
