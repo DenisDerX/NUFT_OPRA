@@ -9,17 +9,17 @@ using namespace std;
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); /* Отримання
 дескриптора пристрою стандартного виводу, а саме консолі*/
 //задаємо константи, що визначають довжину символьних полів: Виробник, Модель, Тип, Рік випуску.
-const int l_surname = 30, l_name = 30, l_delivery = 30, l_date = 10;
+const int l_producer = 30, l_model = 30, l_type = 30, l_year = 10;
 const int countZinP = 50; // оголошуємо константу, що регламентує кількість записів на екрані
 
 //основна структура
 struct iin
 {
-    char surname[l_surname];
-    char date[l_date];
-    char name[l_name];
+    char producer[l_producer];
+    char year[l_year];
+    char name[l_model];
     int nam;
-    char delivery[l_delivery];
+    char type[l_type];
 };
 
 // глобальні змінні
@@ -57,18 +57,18 @@ void addzap()
         j, // змінна для збереження довжини символьних змінних
         t, // змінна для збереження довжини символьних змінних
         q1;
-    iin prod; // оголошуємо змінну для роботи із записом
+    iin heli; // оголошуємо змінну для роботи із записом
     f.clear(); // очищуємо прапорці помилок
     f.seekg(0, ios::end); // переводимо вказівник на кінець файлу
     i = f.tellp() / sizeof(struct iin); //визначаємо кількість записів 
 s11:
     i++; //номер нового запису
     // обнулюяємо поля запису
-    strcpy(prod.date, "");
-    strcpy(prod.surname, "");
-    strcpy(prod.name, "");
-    prod.nam = 0;
-    strcpy(prod.delivery, "");
+    strcpy(heli.year, "");
+    strcpy(heli.producer, "");
+    strcpy(heli.name, "");
+    heli.nam = 0;
+    strcpy(heli.type, "");
     pp = 0;
     //далі заповнюємо поля нового запису
     cout << " Запис № " << i << ": \n";
@@ -76,46 +76,46 @@ s11:
     cout << " Рік випуску -> ";
     do
     {
-        gets_s(prod.date); // зчитуємо значення у символьне поле
-        t = strlen(prod.date); //визначаємо довжину символьного поля
+        gets_s(heli.year); // зчитуємо значення у символьне поле
+        t = strlen(heli.year); //визначаємо довжину символьного поля
     } while (t == 0); // цикл буде виконуватися до тих пір, поки довжина введеного символьного поля буде нульовою
-    for (j = t; j < l_date - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
-        strcat(prod.date, " ");
+    for (j = t; j < l_year - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
+        strcat(heli.year, " ");
 
     cout << "\n Виробник -> ";
     do
     {
-        gets_s(prod.surname); // зчитуємо значення у символьне поле
-        t = strlen(prod.surname); //визначаємо довжину символьного поля
+        gets_s(heli.producer); // зчитуємо значення у символьне поле
+        t = strlen(heli.producer); //визначаємо довжину символьного поля
     } while (t == 0); // цикл буде виконуватися до тих пір, поки довжина введеного символьного поля буде нульовою
-    for (j = t; j < l_surname - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
-        strcat(prod.surname, " ");
+    for (j = t; j < l_producer - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
+        strcat(heli.producer, " ");
 
     cout << "\n Модель -> ";
     do
     {
-        gets_s(prod.name); // зчитуємо значення у символьне поле
-        t = strlen(prod.name); //визначаємо довжину символьного поля
+        gets_s(heli.name); // зчитуємо значення у символьне поле
+        t = strlen(heli.name); //визначаємо довжину символьного поля
     } while (t == 0); // цикл буде виконуватися до тих пір, поки довжина введеного символьного поля буде нульовою
-    for (j = t; j < l_name - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
-        strcat(prod.name, " ");
+    for (j = t; j < l_model - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
+        strcat(heli.name, " ");
 
     cout << "\n Кількість пасажирських місць -> ";
     do
     {
-        cin >> prod.nam; // зчитуємо значення у числове поле
+        cin >> heli.nam; // зчитуємо значення у числове поле
     } while (t == 0); // цикл буде виконуватися до тих пір, поки довжина введеного символьного поля буде нульовою
 
     cout << "\n Тип -> ";
     do
     {
-        gets_s(prod.delivery); // зчитуємо значення у символьне поле
-        t = strlen(prod.delivery); //визначаємо довжину символьного поля
+        gets_s(heli.type); // зчитуємо значення у символьне поле
+        t = strlen(heli.type); //визначаємо довжину символьного поля
     } while (t == 0); // цикл буде виконуватися до тих пір, поки довжина введеного символьного поля буде нульовою
-    for (j = t; j < l_delivery - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
-        strcat(prod.delivery, " ");
+    for (j = t; j < l_type - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
+        strcat(heli.type, " ");
 
-    f.write((char*)&prod, sizeof(struct iin)); // записуємо у файл сформований запис
+    f.write((char*)&heli, sizeof(struct iin)); // записуємо у файл сформований запис
 s12:
     cout << " Для введення ще одного запису натисніть -> Enter, для закінчення -> Esc \n";
     if ((pp = _getch()) != 27)
@@ -156,7 +156,7 @@ star:
         f.read((char*)&zap, sizeof(struct iin)); //зчитування запису з файлу у змінну zap
         if (f.eof()) break; // якщо досягнуто кінець файлу, то вийти з циклу
         // виводимо поля зчитаного запису на екран
-     printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.date, zap.surname, zap.name, zap.nam, zap.delivery);
+     printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type);
         space++; //збільшуємо лічильник кількості записів на екрані на 1
     }
     cout << "|___|_______________|______________________________|______________________________|______________________________|_____________________________|\n";
@@ -203,7 +203,7 @@ start:
     cout << "|===|===============|==============================|==============================|==============================|=============================|\n";
     f.read((char*)&zap, sizeof(struct iin));
     {
-        printf("|   |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n", zap.date, zap.surname, zap.name, zap.nam, zap.delivery);
+        printf("|   |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n", zap.year, zap.producer, zap.name, zap.nam, zap.type);
     }
     cout << "|___|_______________|____________________|_____________________|__________________|__________________|\n";
     printf("|<<<<<<<\"Для підтвердження редагування натисніть Enter, а для відміни Esc\">>>>>>>|\n");
@@ -214,31 +214,31 @@ control:
         iin prod; // оголошуємо змінну для роботи із записом
         // обнулюяємо поля запису
 
-        strcpy(prod.date, "");
-        strcpy(prod.surname, "");
+        strcpy(prod.year, "");
+        strcpy(prod.producer, "");
         strcpy(prod.name, "");
         prod.nam = 0;
-        strcpy(prod.delivery, "");
+        strcpy(prod.type, "");
         //далі заповнюємо поля нового запису
         cout << "Запис № " << i << ": \n";
 
         cout << " Рік випуску -> ";
         do
         {
-            gets_s(prod.date);
-            t = strlen(prod.date);
+            gets_s(prod.year);
+            t = strlen(prod.year);
         } while (t == 0);
-        for (j = t; j < l_date - 1; j++)
-            strcat(prod.date, " ");
+        for (j = t; j < l_year - 1; j++)
+            strcat(prod.year, " ");
 
         cout << "\n Виробник -> ";
         do
         {
-            gets_s(prod.surname);
-            t = strlen(prod.surname);
+            gets_s(prod.producer);
+            t = strlen(prod.producer);
         } while (t == 0);
-        for (j = t; j < l_surname - 1; j++)
-            strcat(prod.surname, " ");
+        for (j = t; j < l_producer - 1; j++)
+            strcat(prod.producer, " ");
 
         cout << "\n Модель -> ";
         do
@@ -246,7 +246,7 @@ control:
             gets_s(prod.name);
             t = strlen(prod.name);
         } while (t == 0);
-        for (j = t; j < l_name - 1; j++)
+        for (j = t; j < l_model - 1; j++)
             strcat(prod.name, " ");
 
         cout << "\n Кількість пасажирських місць -> ";
@@ -258,11 +258,11 @@ control:
         cout << "\n Тип -> ";
         do
         {
-            gets_s(prod.delivery);
-            t = strlen(prod.delivery);
+            gets_s(prod.type);
+            t = strlen(prod.type);
         } while (t == 0);
-        for (j = t; j < l_delivery - 1; j++)
-            strcat(prod.delivery, " ");
+        for (j = t; j < l_type - 1; j++)
+            strcat(prod.type, " ");
 
         printf("|<<<<<<<\"Для підтвердження редагування натисніть Enter, а для відміни Esc\">>>>>>>|\n");
     control2:
@@ -301,7 +301,7 @@ void delzap()
     cout << "| № | Рік випуску   | Виробник                     |     Модель                   | Кількість пасажирських місць |  Тип                        |\n";
     cout << "|===|===============|==============================|==============================|==============================|=============================|\n";
     f.read((char*)&zap, sizeof(struct iin));
-    printf("|   |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n", zap.date, zap.surname, zap.name, zap.nam, zap.delivery);
+    printf("|   |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n", zap.year, zap.producer, zap.name, zap.nam, zap.type);
     cout << "|___|_______________|____________________|_____________________|__________________|__________________|\n";
     printf("|<<<\"Для підтвердження редагування натисніть Enter, а для відміни Esc\">>>|\n");
 control:
@@ -368,7 +368,7 @@ int fyy(char* a, char* b)
 }
 
 // Процедура для виводу списку гелікоптерів за кількістю місць та типом
-void intr1()
+void tsk1()
 {
 l1:
     system("cls");
@@ -397,9 +397,9 @@ l1:
         f.read((char*)&zap, sizeof(struct iin)); //зчитування запису з файлу у змінну zap
         if (f.eof()) break; // якщо досягнуто кінець файлу, то вийти з циклу
         // виводимо поля зчитаного запису на екран
-        if (zap.nam == y && fyy(t, zap.delivery) == 1)
+        if (zap.nam == y && fyy(t, zap.type) == 1)
         {
-            printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.date, zap.surname, zap.name, zap.nam, zap.delivery);
+            printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type);
         }
         space++;
     }
@@ -426,7 +426,7 @@ ex:
 
 
 //Процедура виводу списку гелікоптерів гелікоптерів заданого типу
-void intr2()
+void tsk2()
 {
 l1:
     system("cls");
@@ -449,9 +449,9 @@ l1:
     {
         f.read((char*)&zap, sizeof(struct iin));
         if (f.eof()) break;
-        if (fyy(y, zap.delivery) == 1)
+        if (fyy(y, zap.type) == 1)
         {
-            printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.date, zap.surname, zap.name, zap.nam, zap.delivery);
+            printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type);
         }
         space++;
     }
@@ -476,61 +476,9 @@ ex:
 }
 
 
-void intr3()
-{
-l1:
-    system("cls");
-    char y[35];
-    cout << "Введіть дату = ";
-    cin >> y;
-    int numb = 0;
-    iin zap; // оголошуємо змінну для роботи із записом
-    int space; // оголошуємо змінну, що є лічильником кількості записів на екрані
-    int position = 0; // враховує к-сть виведених записів на сторінці
-    int im = 0; // змінна для збереження коду натиснутої клавіші
-    f.clear(); // очищуємо прапорці помилок
-    f.seekp(position * countZinP * sizeof(struct iin), ios::beg); // переміщуємо вказівник на потрібний запис, що вираховується за наступною формулою
-    position* countZinP * sizeof(struct iin);
-    cout << ".___._______________.______________________________.______________________________.______________________________._____________________________.\n";
-    cout << "| № | Рік випуску   | Виробник                     |     Модель                   | Кількість пасажирських місць |  Тип                        |\n";
-    cout << "|===|===============|==============================|==============================|==============================|=============================|\n";
-    space = 0; //обнуляємо значення лічильника кількості записів на екрані
-    int a, b, c, a1, b1, c1;
-    while ((!f.eof()) && (space < countZinP)) //умова виконання циклу: поки не досягли кінця файлу або кількість виведених записів на екран менше countZinP
-    {
-        f.read((char*)&zap, sizeof(struct iin)); //зчитування запису з файлу у змінну zap
-        if (f.eof()) break; // якщо досягнуто кінець файлу, то вийти з циклу
-        // виводимо поля зчитаного запису на екран
-        if (fyy(y, zap.date) == 1)
-        {
-            printf("|%2d |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n", ((1 + space) + ((position)*countZinP)), zap.date, zap.surname, zap.name, zap.nam, zap.delivery);
-            numb = numb + zap.nam;
-        }
-        space++;
-    }
-    cout << "|___|_______________|____________________|_____________________|__________________|__________________|\n";
-    printf(" Кількість доставленого товару на вказану дату: %7d \n", numb);
-    cout << "\n Натисніть: \n\n Enter для того, щоб зробить перевірку заново. \n\n Esc для того, щоб повернутися в головне меню. \n\n\n";
-l2:
-    int go = _getch(); //зчитуємо натиснуту клавішу
-    if (go == 13) // перевірка чи не натиснута клавіша Enter
-    {
-        goto l1;
-    }
-    if (go == 27) // перевірка чи натиснута клавіша Esc
-    {
-        goto ex;
-    }
-    else
-    {
-        goto l2;
-    }
-ex:
-    system("pause");
-}
 
 //Процедура виводу списку гелікоптерів гелікоптерів заданого виробника
-void intr4()
+void tsk4()
 {
 l1:
     system("cls");
@@ -554,9 +502,9 @@ l1:
         f.read((char*)&zap, sizeof(struct iin)); //зчитування запису з файлу у змінну zap
         if (f.eof()) break; // якщо досягнуто кінець файлу, то вийти з циклу
         // виводимо поля зчитаного запису на екран
-        if (fyy(y, zap.surname) == 1)
+        if (fyy(y, zap.producer) == 1)
         {
-            printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.date, zap.surname, zap.name, zap.nam, zap.delivery);
+            printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type);
         }
         space++;
     }
@@ -593,61 +541,49 @@ int stringToInt(const char* str, int startIndex, int length)
     return result;
 }
 
-void intr5()
+
+
+void tsk6()
 {
 l1:
     system("cls");
-    char y[35], x[35];
-    cout << "Введіть дату доставки мін = ";
-    cin >> y;
-    cout << "Введіть дату доставки макс = ";
-    cin >> x;
-    iin zap; // оголошуємо змінну для роботи із записом
-    int space; // оголошуємо змінну, що є лічильником кількості записів на екрані
-    int position = 0; // враховує к-сть виведених записів на сторінці
-    int im = 0; // змінна для збереження коду натиснутої клавіші
-    f.clear(); // очищуємо прапорці помилок
-    f.seekp(position * countZinP * sizeof(struct iin), ios::beg); // переміщуємо вказівник на потрібний запис, що вираховується за наступною формулою
-    position* countZinP * sizeof(struct iin);
+    char startYear[5], endYear[5];
+    cout << "Введіть початковий рік: ";
+    cin >> startYear;
+    cout << "Введіть кінцевий рік: ";
+    cin >> endYear;
+
+    int startYearValue = stringToInt(startYear, 0, 4);
+    int endYearValue = stringToInt(endYear, 0, 4);
+
+    cout << "Результати за період " << startYearValue << " - " << endYearValue << ":\n";
     cout << ".___._______________.______________________________.______________________________.______________________________._____________________________.\n";
     cout << "| № | Рік випуску   | Виробник                     |     Модель                   | Кількість пасажирських місць |  Тип                        |\n";
     cout << "|===|===============|==============================|==============================|==============================|=============================|\n";
-    space = 0; //обнуляємо значення лічильника кількості записів на екрані
-    int a, b, c, a1, b1, c1;
-    while ((!f.eof()) && (space < countZinP)) //умова виконання циклу: поки не досягли кінця файлу або кількість виведених записів на екран менше countZinP
+
+    int position = 0;
+    int space = 0;
+    iin zap;
+
+    f.clear();
+    f.seekp(position * countZinP * sizeof(struct iin), ios::beg);
+    position* countZinP * sizeof(struct iin);
+
+    while ((!f.eof()) && (space < countZinP))
     {
-        f.read((char*)&zap, sizeof(struct iin)); //зчитування запису з файлу у змінну zap
-        if (f.eof()) break; // якщо досягнуто кінець файлу, то вийти з циклу
-        // виводимо поля зчитаного запису на екран
-        int day1 = stringToInt(x, 0, 2);
-        int month1 = stringToInt(x, 3, 2);
-        int year1 = stringToInt(x, 6, 4);
+        f.read((char*)&zap, sizeof(struct iin));
+        if (f.eof()) break;
 
-        int day2 = stringToInt(y, 0, 2);
-        int month2 = stringToInt(y, 3, 2);
-        int year2 = stringToInt(y, 6, 4);
-
-        int day3 = stringToInt(zap.date, 0, 2);
-        int month3 = stringToInt(zap.date, 3, 2);
-        int year3 = stringToInt(zap.date, 6, 4);
-        // Порівняння років
-        if (year1 <= year3 && year3 <= year2)
+        int year = stringToInt(zap.year, 6, 4);
+        if (startYearValue <= year && year <= endYearValue)
         {
-            // Порівняння місяців
-            if (month1 <= month3 && month3 <= month2)
-            {
-                // Порівняння днів
-                if (day1 <= day3 && day3 <= day2)
-                    printf("|%2d |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n", ((1 + space) + ((position)*countZinP)), zap.date, zap.surname, zap.name, zap.nam, zap.delivery);
-            }
+            printf("|%2d |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n",((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type);
         }
-        //if(zap.date>=y)
-        //if(x>=zap.date)
-        //printf("|%2d |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n",((1+space)+((position)*countZinP)), zap.date,zap.surname,zap.name,zap.nam,zap.delivery);
-        space++; //збільшуємо лічильник кількості записів на екрані на 1
+
+        space++;
     }
     cout << "|___|_______________|____________________|_____________________|__________________|__________________|\n";
-    cout << "\n Натисніть: \n\n Enter для того, щоб зробить перевірку заново. \n\n Esc для того, щоб повернутися в головне меню. \n\n\n";
+    cout << "\n Натисніть: \n\n Enter для того, щоб зробити перевірку заново. \n\n Esc для того, щоб повернутися в головне меню. \n\n\n";
 l2:
     int go = _getch(); //зчитуємо натиснуту клавішу
     if (go == 13) // перевірка чи не натиснута клавіша Enter
@@ -666,57 +602,8 @@ ex:
     system("pause");
 }
 
-void intr6()
-{
-l1:
-    system("cls");
-    int numb1 = 0, numb2 = 0;
-    char x[10] = "Звичайна";
-    char y[18] = "Експрес-доставка";
-    iin zap; // оголошуємо змінну для роботи із записом
-    int space; // оголошуємо змінну, що є лічильником кількості записів на екрані
-    int position = 0; // враховує к-сть виведених записів на сторінці
-    int im = 0; // змінна для збереження коду натиснутої клавіші
-    f.clear(); // очищуємо прапорці помилок
-    f.seekp(position * countZinP * sizeof(struct iin), ios::beg); // переміщуємо вказівник на потрібний запис, що вираховується за наступною формулою
-    position* countZinP * sizeof(struct iin);
-    space = 0; //обнуляємо значення лічильника кількості записів на екрані
-    int a, b, c, a1, b1, c1;
-    while ((!f.eof()) && (space < countZinP)) //умова виконання циклу: поки не досягли кінця файлу або кількість виведених записів на екран менше countZinP
-    {
-        f.read((char*)&zap, sizeof(struct iin)); //зчитування запису з файлу у змінну zap
-        if (f.eof()) break; // якщо досягнуто кінець файлу, то вийти з циклу
-        // виводимо поля зчитаного запису на екран
-        if (fyy(y, zap.delivery) == 1)
-        {
-            numb2 = numb2 + zap.nam;
-        }
-        if (fyy(x, zap.delivery) == 1)
-        {
-            numb1 = numb1 + zap.nam;
-        }
-        space++;
-    }
-    printf(" Кількість доставленого товару звичайною доставкою: %7d \n", numb1);
-    cout << endl;
-    printf(" Кількість доставленого товару експрес-доставкою: %7d \n", numb2);
-    cout << "\n Натисніть: \n\n Enter для того, щоб зробить перевірку заново. \n\n Esc для того, щоб повернутися в головне меню. \n\n\n";
-    int go = _getch(); //зчитуємо натиснуту клавішу
-    if (go == 13) // перевірка чи не натиснута клавіша Enter
-    {
-        goto l1;
-    }
-    if (go == 27) // перевірка чи натиснута клавіша Esc
-    {
-        goto ex;
-    }
-    else
-    {
-        goto l1;
-    }
-ex:
-    system("pause");
-}
+
+
 
 // *** Реалізація текстового інтерфейсу користувача ***
 void menu()
@@ -802,32 +689,23 @@ start: // початок виведення меню на екран
         }
         case 55:
         {
-            intr1();
+            tsk1();
             goto start; // переходимо на мітку start
         }
         case 56:
         {
-            intr2();
+            tsk2();
             goto start; // переходимо на мітку start
         }
-        case 57:
-        {
-            intr3();
-            goto start; // переходимо на мітку start
-        }
+   
         case 58:
         {
-            intr4();
-            goto start; // переходимо на мітку start
-        }
-        case 59:
-        {
-            intr5();
+            tsk4();
             goto start; // переходимо на мітку start
         }
         case 60:
         {
-            intr6();
+            tsk6();
             goto start; // переходимо на мітку start
         }
         case 61:
