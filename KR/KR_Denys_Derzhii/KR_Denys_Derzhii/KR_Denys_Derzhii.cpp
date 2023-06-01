@@ -542,21 +542,21 @@ int stringToInt(const char* str, int startIndex, int length)
 }
 
 
-
+//Процедура виводу cписоку гелікоптерів, які випустили у заданий період
 void tsk6()
 {
 l1:
     system("cls");
-    char startYear[5], endYear[5];
+    char x[5], y[5];
     cout << "Введіть початковий рік: ";
-    cin >> startYear;
+    cin >> x;
     cout << "Введіть кінцевий рік: ";
-    cin >> endYear;
+    cin >> y;
 
-    int startYearValue = stringToInt(startYear, 0, 4);
-    int endYearValue = stringToInt(endYear, 0, 4);
+    int xValue = stringToInt(x, 0, 4);
+    int yValue = stringToInt(y, 0, 4);
 
-    cout << "Результати за період " << startYearValue << " - " << endYearValue << ":\n";
+    cout << "Результати за період " << xValue << " - " << yValue << ":\n";
     cout << ".___._______________.______________________________.______________________________.______________________________._____________________________.\n";
     cout << "| № | Рік випуску   | Виробник                     |     Модель                   | Кількість пасажирських місць |  Тип                        |\n";
     cout << "|===|===============|==============================|==============================|==============================|=============================|\n";
@@ -575,15 +575,15 @@ l1:
         if (f.eof()) break;
 
         int year = stringToInt(zap.year, 6, 4);
-        if (startYearValue <= year && year <= endYearValue)
+        if (xValue <= year && year <= yValue)
         {
-            printf("|%2d |  %.10s   | %13s      |  %17s  | %9d        | %14s|\n",((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type);
+            printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n",((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type);
         }
 
         space++;
     }
-    cout << "|___|_______________|____________________|_____________________|__________________|__________________|\n";
-    cout << "\n Натисніть: \n\n Enter для того, щоб зробити перевірку заново. \n\n Esc для того, щоб повернутися в головне меню. \n\n\n";
+    cout << "|___|_______________|______________________________|______________________________|______________________________|_____________________________|\n";
+    cout << "\n Натисніть: \n\n Enter для того, щоб зробить перевірку заново. \n\n Esc для того, щоб повернутися в головне меню. \n\n\n";
 l2:
     int go = _getch(); //зчитуємо натиснуту клавішу
     if (go == 13) // перевірка чи не натиснута клавіша Enter
