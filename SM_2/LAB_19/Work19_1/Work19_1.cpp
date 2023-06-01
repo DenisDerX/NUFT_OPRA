@@ -14,36 +14,36 @@ struct node
     node* r;
 };
 
-void show_childr(node* mt)
+void show(node* mt)
 {
     if (mt != nullptr)
     {
         cout << "Вузол " << mt->x << ";\n";
-        show_childr(mt->l);
-        show_childr(mt->r);
+        show(mt->l);
+        show(mt->r);
     }
 }
 
-int count_non_leaf_nodes(node* mt)
+int count(node* mt)
 {
     if (mt == nullptr || (mt->l == nullptr && mt->r == nullptr))
         return 0;
-    return 1 + count_non_leaf_nodes(mt->l) + count_non_leaf_nodes(mt->r);
+    return 1 + count(mt->l) + count(mt->r);
 }
 
-int sum_positive_values(node* mt)
+int value(node* mt)
 {
     if (mt == nullptr)
         return 0;
     int sum = 0;
     if (mt->x > 0)
         sum += mt->x;
-    sum += sum_positive_values(mt->l);
-    sum += sum_positive_values(mt->r);
+    sum += value(mt->l);
+    sum += value(mt->r);
     return sum;
 }
 
-void add_node_tree(int x, node*& mt)
+void add(int x, node*& mt)
 {
     if (mt == nullptr)
     {
@@ -54,10 +54,10 @@ void add_node_tree(int x, node*& mt)
     }
     else
     {
-        if (count_non_leaf_nodes(mt->l) < count_non_leaf_nodes(mt->r))
+        if (count(mt->l) < count(mt->r))
         {
             if (mt->l != nullptr)
-                add_node_tree(x, mt->l);
+                add(x, mt->l);
             else
             {
                 mt->l = new node;
@@ -69,7 +69,7 @@ void add_node_tree(int x, node*& mt)
         else
         {
             if (mt->r != nullptr)
-                add_node_tree(x, mt->r);
+                add(x, mt->r);
             else
             {
                 mt->r = new node;
@@ -99,18 +99,18 @@ int main()
     i = 0;
     while (i < n)
     {
-        add_node_tree(el[i], tree);
+        add(el[i], tree);
         i++;
     }
 
     cout << "\nЗгенеровані вузли дерева:\n";
-    show_childr(tree);
+    show(tree);
 
-    int non_leaf_nodes = count_non_leaf_nodes(tree);
-    cout << "Кількість не граничних вузлів дерева: " << non_leaf_nodes << endl;
+    int noleaf = count(tree);
+    cout << "Кількість не граничних вузлів дерева: " << noleaf << endl;
 
-    int sum_positive = sum_positive_values(tree);
-    cout << "Сума додатних значень вузлів: " << sum_positive << endl;
+    int sum = value(tree);
+    cout << "Сума додатних значень вузлів: " << sum << endl;
 
     delete tree;
     return 0;
