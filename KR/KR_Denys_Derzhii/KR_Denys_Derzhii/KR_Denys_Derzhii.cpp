@@ -19,6 +19,7 @@ struct iin
     char year[l_year];
     char name[l_model];
     int nam;
+    int weight;
     char type[l_type];
 };
 
@@ -68,6 +69,7 @@ s11:
     strcpy(heli.producer, "");
     strcpy(heli.name, "");
     heli.nam = 0;
+    heli.weight = 0;
     strcpy(heli.type, "");
     pp = 0;
     //далі заповнюємо поля нового запису
@@ -115,6 +117,12 @@ s11:
     for (j = t; j < l_type - 1; j++) // цикл забезпечує додавання до символьного поля пробілів до заданої довжини
         strcat(heli.type, " ");
 
+    cout << "\n Вантажопідйомність -> ";
+    do
+    {
+        cin >> heli.weight; // зчитуємо значення у числове поле
+    } while (t == 0); // цикл буде виконуватися до тих пір, поки довжина введеного символьного поля буде нульовою
+
     f.write((char*)&heli, sizeof(struct iin)); // записуємо у файл сформований запис
 s12:
     cout << " Для введення ще одного запису натисніть -> Enter, для закінчення -> Esc \n";
@@ -147,19 +155,19 @@ star:
     position* countZinP * sizeof(struct iin);
     system("cls");
     printf("|<<< Загальна кількість записів у файлі = %5d >>>|\n", size);
-    cout << ".___._______________.______________________________.______________________________.______________________________._____________________________.\n";
-    cout << "| № | Рік випуску   | Виробник                     |     Модель                   | Кількість пасажирських місць |  Тип                        |\n";
-    cout << "|===|===============|==============================|==============================|==============================|=============================|\n";
+    cout << ".___._______________.______________________________.______________________________.______________________________._____________________________.___________________________.\n";
+    cout << "| № | Рік випуску   | Виробник                     |     Модель                   | Кількість пасажирських місць |  Тип                        | Вантажопідйомність КГ     |\n";
+    cout << "|===|===============|==============================|==============================|==============================|=========================================================|\n";
     space = 0; //обнуляємо значення лічильника кількості записів на екрані
     while ((!f.eof()) && (space < countZinP)) //умова виконання циклу: поки не досягли кінця файлу або кількість виведених записів на екран менше countZinP
     {
         f.read((char*)&zap, sizeof(struct iin)); //зчитування запису з файлу у змінну zap
         if (f.eof()) break; // якщо досягнуто кінець файлу, то вийти з циклу
         // виводимо поля зчитаного запису на екран
-     printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|\n", ((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type);
+     printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|%9d                  |\n", ((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type, zap.weight);
         space++; //збільшуємо лічильник кількості записів на екрані на 1
     }
-    cout << "|___|_______________|______________________________|______________________________|______________________________|_____________________________|\n";
+    cout << "|___|_______________|______________________________|______________________________|______________________________|_____________________________|___________________________|\n";
     printf("|<<<\"Up/Down - переміщення на стор.\"<<< №%2d >>>\"Esc -головне меню \">>>|\n", position + 1);
 ctrl:
     im = _getch(); // зчитуємо код натиснутої клавіші
@@ -211,58 +219,58 @@ control:
     im = _getch(); // зчитуємо код натиснутої клавіші
     if (im == 13)
     {
-        iin prod; // оголошуємо змінну для роботи із записом
+        iin heli; // оголошуємо змінну для роботи із записом
         // обнулюяємо поля запису
 
-        strcpy(prod.year, "");
-        strcpy(prod.producer, "");
-        strcpy(prod.name, "");
-        prod.nam = 0;
-        strcpy(prod.type, "");
+        strcpy(heli.year, "");
+        strcpy(heli.producer, "");
+        strcpy(heli.name, "");
+        heli.nam = 0;
+        strcpy(heli.type, "");
         //далі заповнюємо поля нового запису
         cout << "Запис № " << i << ": \n";
 
         cout << " Рік випуску -> ";
         do
         {
-            gets_s(prod.year);
-            t = strlen(prod.year);
+            gets_s(heli.year);
+            t = strlen(heli.year);
         } while (t == 0);
         for (j = t; j < l_year - 1; j++)
-            strcat(prod.year, " ");
+            strcat(heli.year, " ");
 
         cout << "\n Виробник -> ";
         do
         {
-            gets_s(prod.producer);
-            t = strlen(prod.producer);
+            gets_s(heli.producer);
+            t = strlen(heli.producer);
         } while (t == 0);
         for (j = t; j < l_producer - 1; j++)
-            strcat(prod.producer, " ");
+            strcat(heli.producer, " ");
 
         cout << "\n Модель -> ";
         do
         {
-            gets_s(prod.name);
-            t = strlen(prod.name);
+            gets_s(heli.name);
+            t = strlen(heli.name);
         } while (t == 0);
         for (j = t; j < l_model - 1; j++)
-            strcat(prod.name, " ");
+            strcat(heli.name, " ");
 
         cout << "\n Кількість пасажирських місць -> ";
         do
         {
-            cin >> prod.nam;
+            cin >> heli.nam;
         } while (t == 0);
 
         cout << "\n Тип -> ";
         do
         {
-            gets_s(prod.type);
-            t = strlen(prod.type);
+            gets_s(heli.type);
+            t = strlen(heli.type);
         } while (t == 0);
         for (j = t; j < l_type - 1; j++)
-            strcat(prod.type, " ");
+            strcat(heli.type, " ");
 
         printf("|<<<<<<<\"Для підтвердження редагування натисніть Enter, а для відміни Esc\">>>>>>>|\n");
     control2:
@@ -270,7 +278,7 @@ control:
         if (im == 13) // якщо натиснута клавіша Enter
         {
             f.seekp((nom - 1) * sizeof(struct iin), ios::beg); // переміщуємо вказівник на запис, що буде замінено
-            f.write((char*)&prod, sizeof(struct iin)); // записуємо у файл новий запис
+            f.write((char*)&heli, sizeof(struct iin)); // записуємо у файл новий запис
             goto start;
         }
         else
