@@ -607,6 +607,76 @@ int stringToInt(const char* str, int startIndex, int length)
     return result;
 }
 
+void tsk5()
+{
+l1:
+    system("cls");
+    char x[5], y[5];
+    cout << "Введіть початковий рік: ";
+    cin >> x;
+    cout << "Введіть кінцевий рік: ";
+    cin >> y;
+
+    int xValue = stringToInt(x, 0, 4);
+    int yValue = stringToInt(y, 0, 4);
+
+    cout << "Результати за період, крім " << xValue << " - " << yValue << ":\n";
+    cout << ".___._______________.______________________________.______________________________.______________________________._____________________________.___________________________.\n";
+    cout << "| № | Рік випуску   | Виробник                     |     Модель                   | Кількість пасажирських місць |  Тип                        | Вантажопідйомність КГ     |\n";
+    cout << "|===|===============|==============================|==============================|==============================|=========================================================|\n";
+
+    int position = 0;
+    int space = 0;
+    iin zap;
+
+    f.clear();
+    f.seekp(position * countZinP * sizeof(struct iin), ios::beg);
+    position* countZinP * sizeof(struct iin);
+
+    bool dataFound = false; // Додано змінну для перевірки, чи були знайдені дані в проміжку
+
+    while ((!f.eof()) && (space < countZinP))
+    {
+        f.read((char*)&zap, sizeof(struct iin));
+        if (f.eof()) break;
+
+        int year = stringToInt(zap.year, 0, 4);
+        if (xValue <= year && year <= yValue)
+        {
+            // Запис потрапляє в проміжок, не виводимо його
+            continue;
+        }
+
+        dataFound = true; // Знайдено дані поза проміжком
+        printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|%9d                  |\n", ((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type, zap.weight);
+
+        space++;
+    }
+    cout << "|___|_______________|______________________________|______________________________|______________________________|_____________________________|___________________________|\n";
+
+    if (!dataFound)
+    {
+        cout << "Дані поза заданим проміжком не знайдені.\n";
+    }
+
+    cout << "\n Натисніть: \n\n Enter для того, щоб зробити перевірку заново. \n\n Esc для того, щоб повернутися в головне меню. \n\n\n";
+l2:
+    int go = _getch(); //зчитуємо натиснуту клавішу
+    if (go == 13) // перевірка чи не натиснута клавіша Enter
+    {
+        goto l1;
+    }
+    if (go == 27) // перевірка чи натиснута клавіша Esc
+    {
+        goto ex;
+    }
+    else
+    {
+        goto l2;
+    }
+ex:
+    system("pause");
+}
 
 //Процедура виводу cписоку гелікоптерів, які випустили у заданий період
 void tsk6()
@@ -804,6 +874,11 @@ start: // початок виведення меню на екран
         case 58:
         {
             tsk4();
+            goto start; // переходимо на мітку start
+        }
+        case 59:
+        {
+            tsk5();
             goto start; // переходимо на мітку start
         }
         case 60:
