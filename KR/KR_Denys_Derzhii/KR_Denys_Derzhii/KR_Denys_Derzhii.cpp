@@ -640,7 +640,7 @@ l1:
         f.read((char*)&zap, sizeof(struct iin));
         if (f.eof()) break;
 
-        int year = stringToInt(zap.year, 6, 4);
+        int year = stringToInt(zap.year, 0, 4);
         if (xValue <= year && year <= yValue)
         {
             printf("|%2d |%.10s      |%10s |%10s |%9d                     |%10s|%9d                  |\n", ((1 + space) + ((position)*countZinP)), zap.year, zap.producer, zap.name, zap.nam, zap.type, zap.weight);
